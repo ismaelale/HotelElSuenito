@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="750" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d633b3b3-5d2d-48a9-bb7b-7abc9a78e395">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="37"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#954A4A">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E6CFCF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#954A4A">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#E6CFCF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="581898f9-a1a2-4988-a73a-9d619d8c0184"/>
+	<queryString>
+		<![CDATA[SELECT tipo_habitacion, COUNT(*) AS cantidad FROM compra_habitaciones GROUP BY tipo_habitacion;]]>
+	</queryString>
+	<field name="tipo_habitacion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="136" backcolor="#1D1C1E" uuid="109117f5-fa84-4eef-befa-6c15a5eaad96"/>
+				<staticText>
+					<reportElement x="0" y="0" width="555" height="136" forecolor="#FFFFFF" uuid="c8d66cab-2977-412e-9a92-0a7455595524"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="35" isBold="true"/>
+					</textElement>
+					<text><![CDATA[REPORTE DE HABITACIONES CON GRAFICA]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="38" backcolor="#660000" uuid="811ba72f-ab58-4151-adbe-b4c5e0bec2a8"/>
+				<textField pattern="dd/MM/yy">
+					<reportElement x="145" y="3" width="262" height="35" forecolor="#FFFFFF" uuid="a684dbdd-e6c6-4aba-898e-26725b12cad8"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="18" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="145" y="0" width="123" height="20" uuid="65981daa-9763-47a0-acb3-8760ee322bb6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[TIPO DE HABITACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="0" width="100" height="20" uuid="95b21812-c6d3-475e-9f1c-8cfb49e15e78"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="20" uuid="1c65c888-a7de-4db7-bdb2-26adc852eb8e"/>
+			</rectangle>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="145" y="4" width="223" height="20" backcolor="#820819" uuid="a8aea0fd-a3d7-4dde-976f-c3916a7b84fe"/>
+				<textField>
+					<reportElement x="0" y="0" width="123" height="20" forecolor="#FFFFFF" uuid="3896a9f1-d42a-4d10-bcfa-b4db6a059d90"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tipo_habitacion}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="123" y="0" width="100" height="20" forecolor="#FFFFFF" uuid="18c70076-3c41-4602-af32-fc2148e2a8c3"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="30" uuid="9ef2babb-1ab7-42c3-a58e-60d34a7e2980"/>
+			</rectangle>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="34" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="301" splitType="Stretch">
+			<pie3DChart>
+				<chart>
+					<reportElement x="0" y="0" width="555" height="301" uuid="29fd8c12-0da9-4177-bf58-266e00f72328"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{tipo_habitacion}]]></keyExpression>
+					<valueExpression><![CDATA[$F{cantidad}]]></valueExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="301" uuid="a88e3da0-e7f9-478f-89d2-182c06068d2b"/>
+			</rectangle>
+		</band>
+	</summary>
+</jasperReport>
