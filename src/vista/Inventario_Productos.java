@@ -24,23 +24,23 @@ public class Inventario_Productos extends javax.swing.JFrame {
         initComponents();
         imagen("alas.png");
         
-        txtbuscarproducto.setForeground(Color.GRAY);
-        txtbuscarproducto.setText("Código/Nombre del producto");
+        txtBuscarProducto.setForeground(Color.GRAY);
+        txtBuscarProducto.setText("Código/Nombre del producto");
 
-    txtbuscarproducto.addFocusListener(new java.awt.event.FocusAdapter() {
+    txtBuscarProducto.addFocusListener(new java.awt.event.FocusAdapter() {
         @Override
         public void focusGained(java.awt.event.FocusEvent evt) {
-            if (txtbuscarproducto.getText().equals("Código/Nombre del producto")) {
-                txtbuscarproducto.setText("");
-                txtbuscarproducto.setForeground(Color.BLACK);
+            if (txtBuscarProducto.getText().equals("Código/Nombre del producto")) {
+                txtBuscarProducto.setText("");
+                txtBuscarProducto.setForeground(Color.BLACK);
             }
         }
 
         @Override
         public void focusLost(java.awt.event.FocusEvent evt) {
-            if (txtbuscarproducto.getText().isEmpty()) {
-                txtbuscarproducto.setForeground(Color.GRAY);
-                txtbuscarproducto.setText("Código/Nombre del producto");
+            if (txtBuscarProducto.getText().isEmpty()) {
+                txtBuscarProducto.setForeground(Color.GRAY);
+                txtBuscarProducto.setText("Código/Nombre del producto");
             }
         }
 });
@@ -78,12 +78,14 @@ public class Inventario_Productos extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableinventario = new javax.swing.JTable();
+        TablaInventario = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        txtbuscarproducto = new javax.swing.JTextField();
+        txtBuscarProducto = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Inventario");
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(96, 24, 44));
@@ -132,7 +134,7 @@ public class Inventario_Productos extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tableinventario.setModel(new javax.swing.table.DefaultTableModel(
+        TablaInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -143,29 +145,33 @@ public class Inventario_Productos extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tableinventario);
+        jScrollPane1.setViewportView(TablaInventario);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(96, 24, 44));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Buscar Producto");
 
-        txtbuscarproducto.setForeground(new java.awt.Color(0, 0, 0));
-        txtbuscarproducto.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtBuscarProducto.setForeground(new java.awt.Color(0, 0, 0));
+        txtBuscarProducto.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtbuscarproductoFocusGained(evt);
+                txtBuscarProductoFocusGained(evt);
             }
         });
-        txtbuscarproducto.addActionListener(new java.awt.event.ActionListener() {
+        txtBuscarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtbuscarproductoActionPerformed(evt);
+                txtBuscarProductoActionPerformed(evt);
             }
         });
-        txtbuscarproducto.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtBuscarProducto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtbuscarproductoKeyTyped(evt);
+                txtBuscarProductoKeyTyped(evt);
             }
         });
+
+        btnBuscar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
+        btnBuscar.setText("Buscar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -175,17 +181,20 @@ public class Inventario_Productos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addGap(13, 13, 13)
-                .addComponent(txtbuscarproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtbuscarproducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(txtBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -207,7 +216,7 @@ public class Inventario_Productos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -223,20 +232,20 @@ public class Inventario_Productos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_lblLogoComponentAdded
 
-    private void txtbuscarproductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarproductoKeyTyped
+    private void txtBuscarProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarProductoKeyTyped
 
-    }//GEN-LAST:event_txtbuscarproductoKeyTyped
+    }//GEN-LAST:event_txtBuscarProductoKeyTyped
 
-    private void txtbuscarproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarproductoActionPerformed
+    private void txtBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarProductoActionPerformed
         // TODO add your handling code here:
         
         
         
-    }//GEN-LAST:event_txtbuscarproductoActionPerformed
+    }//GEN-LAST:event_txtBuscarProductoActionPerformed
 
-    private void txtbuscarproductoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtbuscarproductoFocusGained
+    private void txtBuscarProductoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarProductoFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtbuscarproductoFocusGained
+    }//GEN-LAST:event_txtBuscarProductoFocusGained
 
     /**
      * @param args the command line arguments
@@ -264,6 +273,8 @@ public class Inventario_Productos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaInventario;
+    private javax.swing.JButton btnBuscar;
     public javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -271,7 +282,6 @@ public class Inventario_Productos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblLogo;
-    private javax.swing.JTable tableinventario;
-    public javax.swing.JTextField txtbuscarproducto;
+    public javax.swing.JTextField txtBuscarProducto;
     // End of variables declaration//GEN-END:variables
 }
