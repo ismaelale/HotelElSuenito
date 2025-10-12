@@ -14,6 +14,7 @@ public class Inventario_Productos {
     
     private ArrayList<Productos> ListaProductos;
     
+    
     public Inventario_Productos(){
         ListaProductos = new ArrayList<>();
     }

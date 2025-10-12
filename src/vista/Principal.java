@@ -106,13 +106,14 @@ private void aplicarCursorATodosLosBotones(Container container) {
         jLabel1 = new javax.swing.JLabel();
         btnClientes = new javax.swing.JButton();
         btnHabitaciones = new javax.swing.JButton();
-        BtnAdmins = new javax.swing.JButton();
+        btnProductos = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         btnFacturacion = new javax.swing.JButton();
         btnReportes = new javax.swing.JButton();
         lblUsuario = new javax.swing.JLabel();
         btnConocenos = new javax.swing.JButton();
         btnManual = new javax.swing.JButton();
+        BtnAdmins1 = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -179,28 +180,28 @@ private void aplicarCursorATodosLosBotones(Container container) {
         jPanel2.add(btnHabitaciones);
         btnHabitaciones.setBounds(310, 10, 260, 70);
 
-        BtnAdmins.setBackground(new java.awt.Color(252, 246, 234));
-        BtnAdmins.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        BtnAdmins.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/trabajo-en-equipo.png"))); // NOI18N
-        BtnAdmins.setText("\t                            \tADMINS");
-        BtnAdmins.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BtnAdmins.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        BtnAdmins.setFocusable(false);
-        BtnAdmins.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnProductos.setBackground(new java.awt.Color(252, 246, 234));
+        btnProductos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/trabajo-en-equipo.png"))); // NOI18N
+        btnProductos.setText("Productos");
+        btnProductos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnProductos.setFocusable(false);
+        btnProductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BtnAdminsMouseEntered(evt);
+                btnProductosMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                BtnAdminsMouseExited(evt);
+                btnProductosMouseExited(evt);
             }
         });
-        BtnAdmins.addActionListener(new java.awt.event.ActionListener() {
+        btnProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAdminsActionPerformed(evt);
+                btnProductosActionPerformed(evt);
             }
         });
-        jPanel2.add(BtnAdmins);
-        BtnAdmins.setBounds(310, 90, 260, 70);
+        jPanel2.add(btnProductos);
+        btnProductos.setBounds(310, 170, 260, 70);
 
         btnSalir.setBackground(new java.awt.Color(252, 246, 234));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -223,7 +224,7 @@ private void aplicarCursorATodosLosBotones(Container container) {
             }
         });
         jPanel2.add(btnSalir);
-        btnSalir.setBounds(310, 170, 260, 70);
+        btnSalir.setBounds(590, 170, 260, 70);
 
         btnFacturacion.setBackground(new java.awt.Color(252, 246, 234));
         btnFacturacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -317,6 +318,29 @@ private void aplicarCursorATodosLosBotones(Container container) {
         jPanel2.add(btnManual);
         btnManual.setBounds(590, 90, 260, 70);
 
+        BtnAdmins1.setBackground(new java.awt.Color(252, 246, 234));
+        BtnAdmins1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BtnAdmins1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/trabajo-en-equipo.png"))); // NOI18N
+        BtnAdmins1.setText("\t                            \tADMINS");
+        BtnAdmins1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnAdmins1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BtnAdmins1.setFocusable(false);
+        BtnAdmins1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BtnAdmins1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnAdmins1MouseExited(evt);
+            }
+        });
+        BtnAdmins1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAdmins1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(BtnAdmins1);
+        BtnAdmins1.setBounds(310, 90, 260, 70);
+
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 880, 270);
 
@@ -356,13 +380,13 @@ private void aplicarCursorATodosLosBotones(Container container) {
        
     }//GEN-LAST:event_btnHabitacionesMouseExited
 
-    private void BtnAdminsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAdminsMouseEntered
+    private void btnProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseEntered
        
-    }//GEN-LAST:event_BtnAdminsMouseEntered
+    }//GEN-LAST:event_btnProductosMouseEntered
 
-    private void BtnAdminsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAdminsMouseExited
+    private void btnProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseExited
       
-    }//GEN-LAST:event_BtnAdminsMouseExited
+    }//GEN-LAST:event_btnProductosMouseExited
 
     private void btnFacturacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFacturacionMouseEntered
         
@@ -400,9 +424,9 @@ private void aplicarCursorATodosLosBotones(Container container) {
 
     }//GEN-LAST:event_btnHabitacionesActionPerformed
 
-    private void BtnAdminsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAdminsActionPerformed
-
-    }//GEN-LAST:event_BtnAdminsActionPerformed
+    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
+        
+    }//GEN-LAST:event_btnProductosActionPerformed
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
         // TODO add your handling code here:
@@ -437,6 +461,18 @@ private void aplicarCursorATodosLosBotones(Container container) {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnManualActionPerformed
 
+    private void BtnAdmins1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAdmins1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnAdmins1MouseEntered
+
+    private void BtnAdmins1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAdmins1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnAdmins1MouseExited
+
+    private void BtnAdmins1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAdmins1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnAdmins1ActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -446,12 +482,13 @@ private void aplicarCursorATodosLosBotones(Container container) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton BtnAdmins;
+    public javax.swing.JButton BtnAdmins1;
     public javax.swing.JButton btnClientes;
     public javax.swing.JButton btnConocenos;
     public javax.swing.JButton btnFacturacion;
     public javax.swing.JButton btnHabitaciones;
     public javax.swing.JButton btnManual;
+    public javax.swing.JButton btnProductos;
     public javax.swing.JButton btnReportes;
     public javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;

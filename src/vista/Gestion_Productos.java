@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
-
+import vista.Inventario_Productos;
+import controlador.Productos_Controlador;
 /**
  *
  * @author Ismael
@@ -17,6 +18,9 @@ public class Gestion_Productos extends javax.swing.JFrame {
      */
     public Gestion_Productos() {
         initComponents();
+        Inventario_Productos inventario = new Inventario_Productos();
+        Productos_Controlador productoscontrolador = new Productos_Controlador(this, inventario);
+        
     }
 
     /**
@@ -360,4 +364,7 @@ public class Gestion_Productos extends javax.swing.JFrame {
     public javax.swing.JTextField txtPrecioVenta;
     public javax.swing.JTextField txtStockInicial;
     // End of variables declaration//GEN-END:variables
+
+    
+
 }

@@ -21,6 +21,8 @@ import vista.Reservaciones;
 import Reportes.BotonesReportes;
 import modelo.Reservacion;
 import vista.AcercaDeNosotros;
+import vista.Gestion_Productos;
+import vista.Inventario_Productos;
 
 public class LoginControlador implements ActionListener {
 
@@ -68,6 +70,7 @@ public class LoginControlador implements ActionListener {
                 Reservacion reserPOO = new Reservacion();
                 Reservacion_Controlador reserCtrl = new Reservacion_Controlador(reserPOO, reser, ctrl);
                 
+                Gestion_Productos productos = new Gestion_Productos();
                 
                int nivelAcceso = u.getNivelAcceso();
 
@@ -76,7 +79,7 @@ public class LoginControlador implements ActionListener {
                 
                 AcercaDeNosotros conocenos = new AcercaDeNosotros();
                 
-                Principal_Controlador principalCtrl = new Principal_Controlador(principal, clientes, gestionHab, habitaciones, admins, ad, reser, nivelAcceso, btnRep, conocenos);
+                Principal_Controlador principalCtrl = new Principal_Controlador(principal, clientes, gestionHab, habitaciones, admins, ad, reser, nivelAcceso, btnRep, conocenos, productos);
 
                 principalCtrl.iniciar();
                 gestionHab.setVisible(false);

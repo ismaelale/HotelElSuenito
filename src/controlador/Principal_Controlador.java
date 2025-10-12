@@ -16,6 +16,8 @@ import vista.Principal;
 import vista.Reservaciones;
 import vista.AcercaDeNosotros;
 import Reportes.BotonesReportes;
+import vista.Gestion_Productos;
+import vista.Inventario_Productos;
 
 public class Principal_Controlador implements ActionListener {
 
@@ -28,11 +30,12 @@ public class Principal_Controlador implements ActionListener {
     private Reservaciones reser;
     private BotonesReportes btnRep;
     private AcercaDeNosotros conocenos;
+    private Gestion_Productos productos;
     private int nivelAcceso;
 
     public Principal_Controlador(Principal pri,Gestion_Clientes clientes,Gestion_De_Habitaciones gestionHab,Habitaciones habitaciones,Administracion_de_usuarios adms,ADMINS ad,
                                  Reservaciones reser,int nivelAcceso,BotonesReportes btnRep,
-                                 AcercaDeNosotros conocenos) {
+                                 AcercaDeNosotros conocenos, Gestion_Productos productos) {
 
         this.pri = pri;
         this.clientes = clientes;
@@ -44,17 +47,19 @@ public class Principal_Controlador implements ActionListener {
         this.btnRep = btnRep;
         this.conocenos = conocenos;
         this.nivelAcceso = nivelAcceso;
+        this.productos = productos;
 
         configurarAccesos();
 
         this.pri.btnClientes.addActionListener(this);
         this.pri.btnHabitaciones.addActionListener(this);
-        this.pri.BtnAdmins.addActionListener(this);
+        this.pri.BtnAdmins1.addActionListener(this);
         this.pri.btnSalir.addActionListener(this);
         this.pri.btnFacturacion.addActionListener(this);
         this.pri.btnReportes.addActionListener(this);
         this.pri.btnManual.addActionListener(this);
         this.pri.btnConocenos.addActionListener(this);
+        this.pri.btnProductos.addActionListener(this);
     }
 
     public void iniciar() {
@@ -66,6 +71,7 @@ public class Principal_Controlador implements ActionListener {
         adms.setLocationRelativeTo(null);
         reser.setLocationRelativeTo(null);
         conocenos.setLocationRelativeTo(null);
+        productos.setLocationRelativeTo(null);
     }
 
     private void configurarAccesos() {
@@ -73,18 +79,18 @@ public class Principal_Controlador implements ActionListener {
             case 1:
                 break;
             case 2:
-                pri.BtnAdmins.setVisible(false);
+                pri.BtnAdmins1.setVisible(false);
                 break;
             case 3:
                 pri.btnClientes.setVisible(false);
                 pri.btnHabitaciones.setVisible(false);
-                pri.BtnAdmins.setVisible(false);
+                pri.BtnAdmins1.setVisible(false);
                 pri.btnFacturacion.setVisible(false);
                 break;
             default:
                 pri.btnClientes.setVisible(false);
                 pri.btnHabitaciones.setVisible(false);
-                pri.BtnAdmins.setVisible(false);
+                pri.BtnAdmins1.setVisible(false);
                 pri.btnReportes.setVisible(false);
                 pri.btnFacturacion.setVisible(false);
                 break;
@@ -101,7 +107,7 @@ public class Principal_Controlador implements ActionListener {
             gestionHab.setVisible(true);
         }
 
-        if (e.getSource() == pri.BtnAdmins) {
+        if (e.getSource() == pri.BtnAdmins1) {
             ad.setVisible(true);
         }
 
@@ -124,6 +130,11 @@ public class Principal_Controlador implements ActionListener {
         if (e.getSource() == pri.btnConocenos) {
             conocenos.setVisible(true);
         }
+        if(e.getSource() == pri.btnProductos){
+            productos.setVisible(true);
+        }
+
+        
     }
 
     private void abrirPDF() {
