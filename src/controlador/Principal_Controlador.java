@@ -17,7 +17,6 @@ import vista.Reservaciones;
 import vista.AcercaDeNosotros;
 import Reportes.BotonesReportes;
 import vista.Gestion_Productos;
-import vista.Inventario_Productos;
 
 public class Principal_Controlador implements ActionListener {
 

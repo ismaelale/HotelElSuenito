@@ -18,6 +18,8 @@ public class Productos {
     private double PrecioCompra;
     private double PrecioVenta;
     
+    public Productos(){}
+    
     public Productos(String NombreProducto, int StockInicial, int StockMin, int StockMax, String Descripcion, double PrecioCompra, double PrecioVenta){
      
         this.NombreProducto = NombreProducto;
@@ -50,8 +52,32 @@ public class Productos {
         return PrecioVenta;
     }
 
+    public int getStockMin() {
+        return StockMin;
+    }
+
+    public int getStockMax() {
+        return StockMax;
+    }
+
+    public void setNombreProducto(String NombreProducto) {
+        this.NombreProducto = NombreProducto;
+    }
+
     public void setStockInicial(int StockInicial) {
         this.StockInicial = StockInicial;
+    }
+
+    public void setStockMin(int StockMin) {
+        this.StockMin = StockMin;
+    }
+
+    public void setStockMax(int StockMax) {
+        this.StockMax = StockMax;
+    }
+
+    public void setDescripcion(String Descripcion) {
+        this.Descripcion = Descripcion;
     }
 
     public void setPrecioCompra(double PrecioCompra) {
@@ -62,23 +88,7 @@ public class Productos {
         this.PrecioVenta = PrecioVenta;
     }
 
-    public int getStockMin() {
-        return StockMin;
-    }
-
-    public int getStockMax() {
-        return StockMax;
-    }
-
-    public void setStockMin(int StockMin) {
-        this.StockMin = StockMin;
-    }
-
-    public void setStockMax(int StockMax) {
-        this.StockMax = StockMax;
-    }
     
-    
-    
+   
     
 }

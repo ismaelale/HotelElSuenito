@@ -6,9 +6,11 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import modelo.Productos;
+import modelo.ProductosDao;
 import vista.Gestion_Productos;
-import vista.Inventario_Productos;
 
 /**
  *
@@ -17,27 +19,81 @@ import vista.Inventario_Productos;
 public class Productos_Controlador implements ActionListener{
     
    private Gestion_Productos GestionProductos;
-   private Inventario_Productos InventarioProductos;
    
    
-   public Productos_Controlador(Gestion_Productos GestionProductos, Inventario_Productos InventarioProductos){
+   public Productos_Controlador(Gestion_Productos GestionProductos){
        this.GestionProductos = GestionProductos;
-       this.InventarioProductos = InventarioProductos;
        
        
+       this.GestionProductos.btnRegistrar.addActionListener(this);
+       this.GestionProductos.btsalir.addActionListener(this);
        
-       this.GestionProductos.btnInventario.addActionListener(this);
+       this.GestionProductos.TablaProductos.addMouseListener(new MouseAdapter(){
+          public void mouseClicked(MouseEvent e){
+              llenarCamposDesdeTabla();
+          } 
+           
+       });
+       
    }
+   
+    public void actualizarTabla() {
+        ProductosDao productosDao = new ProductosDao();
+        productosDao.llenarTabla(GestionProductos.TablaProductos); // Llenamos la tabla
+    }
+   
+    
+    
+    private void llenarCamposDesdeTabla() {
+    int fila = GestionProductos.TablaProductos.getSelectedRow();
+    if(fila != -1) { // Si se ha seleccionado una fila
+        GestionProductos.txtNombreProducto.setText(GestionProductos.TablaProductos.getValueAt(fila, 1).toString());
+        GestionProductos.txtStockInicial.setText(GestionProductos.TablaProductos.getValueAt(fila, 2).toString());
+        GestionProductos.txtStockMin.setText(GestionProductos.TablaProductos.getValueAt(fila, 3).toString());
+        GestionProductos.txtStockMax.setText(GestionProductos.TablaProductos.getValueAt(fila, 4).toString());
+        GestionProductos.txtDescripcion.setText(GestionProductos.TablaProductos.getValueAt(fila, 5).toString());
+        GestionProductos.txtPrecioCompra.setText(GestionProductos.TablaProductos.getValueAt(fila, 6).toString());
+        GestionProductos.txtPrecioVenta.setText(GestionProductos.TablaProductos.getValueAt(fila, 7).toString());
+    }
+}
    
    @Override
     public void actionPerformed(ActionEvent e) {
         
-        if(e.getSource() == GestionProductos.btnInventario){
-            InventarioProductos.setVisible(true);
+        if(e.getSource() == GestionProductos.btnRegistrar){
+            
+            //datos de la vista
+            String nombre = GestionProductos.txtNombreProducto.getText();
+            int stockinicial = Integer.parseInt(GestionProductos.txtStockInicial.getText());
+            int stockmin = Integer.parseInt(GestionProductos.txtStockMin.getText());
+            int stockmax = Integer.parseInt(GestionProductos.txtStockMax.getText());
+            String descr = GestionProductos.txtDescripcion.getText();
+            double precioCompra = Double.parseDouble(GestionProductos.txtPrecioCompra.getText());
+            double precioventa = Double.parseDouble(GestionProductos.txtPrecioVenta.getText());
+            
+            //Passarlos al modelo
+            Productos products = new Productos();
+            products.setNombreProducto(nombre);
+            products.setStockInicial(stockinicial);
+            products.setStockMin(stockmin);
+            products.setStockMax(stockmax);
+            products.setDescripcion(descr);
+            products.setPrecioCompra(precioCompra);
+            products.setPrecioVenta(precioventa);
+            
+            
+            ProductosDao productosdao = new ProductosDao();
+            productosdao.AggProductos(products);
+            actualizarTabla();
+        }
+        if(e.getSource() == GestionProductos.btsalir){
             GestionProductos.dispose();
         }
         
+        
     }
+    
+    
     
     
 

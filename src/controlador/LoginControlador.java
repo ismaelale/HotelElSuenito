@@ -22,7 +22,6 @@ import Reportes.BotonesReportes;
 import modelo.Reservacion;
 import vista.AcercaDeNosotros;
 import vista.Gestion_Productos;
-import vista.Inventario_Productos;
 
 public class LoginControlador implements ActionListener {
 
