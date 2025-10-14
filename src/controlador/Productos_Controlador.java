@@ -16,17 +16,20 @@ import vista.Gestion_Productos;
  *
  * @author Ismael
  */
+
 public class Productos_Controlador implements ActionListener{
     
    private Gestion_Productos GestionProductos;
    
-   
+   ProductosDao productosdao = new ProductosDao();
    public Productos_Controlador(Gestion_Productos GestionProductos){
        this.GestionProductos = GestionProductos;
        
        
        this.GestionProductos.btnRegistrar.addActionListener(this);
        this.GestionProductos.btsalir.addActionListener(this);
+       this.GestionProductos.btnActualizar.addActionListener(this);
+       this.GestionProductos.btnEliminar.addActionListener(this);
        
        this.GestionProductos.TablaProductos.addMouseListener(new MouseAdapter(){
           public void mouseClicked(MouseEvent e){
@@ -39,7 +42,7 @@ public class Productos_Controlador implements ActionListener{
    
     public void actualizarTabla() {
         ProductosDao productosDao = new ProductosDao();
-        productosDao.llenarTabla(GestionProductos.TablaProductos); // Llenamos la tabla
+        productosDao.ActualizaTabla(GestionProductos.TablaProductos); // Llenamos la tabla
     }
    
     
@@ -47,6 +50,7 @@ public class Productos_Controlador implements ActionListener{
     private void llenarCamposDesdeTabla() {
     int fila = GestionProductos.TablaProductos.getSelectedRow();
     if(fila != -1) { // Si se ha seleccionado una fila
+        GestionProductos.txtIdProducto.setText(GestionProductos.TablaProductos.getValueAt(fila, 0).toString());
         GestionProductos.txtNombreProducto.setText(GestionProductos.TablaProductos.getValueAt(fila, 1).toString());
         GestionProductos.txtStockInicial.setText(GestionProductos.TablaProductos.getValueAt(fila, 2).toString());
         GestionProductos.txtStockMin.setText(GestionProductos.TablaProductos.getValueAt(fila, 3).toString());
@@ -55,6 +59,7 @@ public class Productos_Controlador implements ActionListener{
         GestionProductos.txtPrecioCompra.setText(GestionProductos.TablaProductos.getValueAt(fila, 6).toString());
         GestionProductos.txtPrecioVenta.setText(GestionProductos.TablaProductos.getValueAt(fila, 7).toString());
     }
+    
 }
    
    @Override
@@ -63,6 +68,7 @@ public class Productos_Controlador implements ActionListener{
         if(e.getSource() == GestionProductos.btnRegistrar){
             
             //datos de la vista
+            int idproducto = Integer.parseInt(GestionProductos.txtIdProducto.getText());
             String nombre = GestionProductos.txtNombreProducto.getText();
             int stockinicial = Integer.parseInt(GestionProductos.txtStockInicial.getText());
             int stockmin = Integer.parseInt(GestionProductos.txtStockMin.getText());
@@ -73,6 +79,7 @@ public class Productos_Controlador implements ActionListener{
             
             //Passarlos al modelo
             Productos products = new Productos();
+            products.setIDProducto(idproducto);
             products.setNombreProducto(nombre);
             products.setStockInicial(stockinicial);
             products.setStockMin(stockmin);
@@ -82,10 +89,50 @@ public class Productos_Controlador implements ActionListener{
             products.setPrecioVenta(precioventa);
             
             
-            ProductosDao productosdao = new ProductosDao();
+            
             productosdao.AggProductos(products);
             actualizarTabla();
         }
+        if(e.getSource() == GestionProductos.btnActualizar){
+            //datos de la vista
+            int idproducto = Integer.parseInt(GestionProductos.txtIdProducto.getText());
+            String nombre = GestionProductos.txtNombreProducto.getText();
+            int stockinicial = Integer.parseInt(GestionProductos.txtStockInicial.getText());
+            int stockmin = Integer.parseInt(GestionProductos.txtStockMin.getText());
+            int stockmax = Integer.parseInt(GestionProductos.txtStockMax.getText());
+            String descr = GestionProductos.txtDescripcion.getText();
+            double precioCompra = Double.parseDouble(GestionProductos.txtPrecioCompra.getText());
+            double precioventa = Double.parseDouble(GestionProductos.txtPrecioVenta.getText());
+            
+            //Passarlos al modelo
+            Productos products = new Productos();
+            
+            products.setIDProducto(idproducto);
+            products.setNombreProducto(nombre);
+            products.setStockInicial(stockinicial);
+            products.setStockMin(stockmin);
+            products.setStockMax(stockmax);
+            products.setDescripcion(descr);
+            products.setPrecioCompra(precioCompra);
+            products.setPrecioVenta(precioventa);
+            
+            productosdao.UpdateProductos(products);
+            actualizarTabla();
+        }
+        if(e.getSource() == GestionProductos.btnEliminar){
+            //datos de la vista
+            int idproducto = Integer.parseInt(GestionProductos.txtIdProducto.getText());
+            
+            //Passarlos al modelo
+            Productos products = new Productos();
+            products.setIDProducto(idproducto);
+            
+            productosdao.Eliminar(products);
+            actualizarTabla();
+            
+        }
+        
+        
         if(e.getSource() == GestionProductos.btsalir){
             GestionProductos.dispose();
         }

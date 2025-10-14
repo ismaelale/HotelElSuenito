@@ -10,6 +10,7 @@ package modelo;
  */
 public class Productos {
     
+    private int IDProducto;
     private String NombreProducto;
     private int StockInicial;
     private int StockMin;
@@ -20,8 +21,9 @@ public class Productos {
     
     public Productos(){}
     
-    public Productos(String NombreProducto, int StockInicial, int StockMin, int StockMax, String Descripcion, double PrecioCompra, double PrecioVenta){
+    public Productos(int IDProducto, String NombreProducto, int StockInicial, int StockMin, int StockMax, String Descripcion, double PrecioCompra, double PrecioVenta){
      
+        this.IDProducto = IDProducto;
         this.NombreProducto = NombreProducto;
         this.StockInicial = StockInicial;
         this.StockMin = StockMin;
@@ -30,6 +32,10 @@ public class Productos {
         this.PrecioCompra = PrecioCompra;
         this.PrecioVenta = PrecioVenta;
      
+    }
+    
+    public int getIDProducto(){
+        return IDProducto;
     }
 
     public String getNombreProducto() {
@@ -60,6 +66,9 @@ public class Productos {
         return StockMax;
     }
 
+    public void setIDProducto(int IDProducto){
+        this.IDProducto = IDProducto;
+    }
     public void setNombreProducto(String NombreProducto) {
         this.NombreProducto = NombreProducto;
     }

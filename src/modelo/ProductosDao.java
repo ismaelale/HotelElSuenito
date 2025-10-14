@@ -44,7 +44,7 @@ public class ProductosDao extends Conexion{
 
     }
     
-    public void llenarTabla(JTable tabla) {
+    public void ActualizaTabla(JTable tabla) {
     // Obtenemos el modelo de la tabla
         Connection con = (Connection) getConnection();
     
@@ -79,6 +79,47 @@ public class ProductosDao extends Conexion{
     
     }
  
+    public void UpdateProductos(Productos products){
+        
+        Connection con = (Connection) getConnection();
+        String consulta = "update productos set Nombre_Producto = ?, Stock_Inicial = ?, Stock_Min = ?, Stock_Max = ?, Descripcion = ?, Precio_Compra = ?, Precio_Venta = ? where IDProducto = ?";
+        
+        try{
+            PreparedStatement ps = con.prepareStatement(consulta);
+            ps.setString(1, products.getNombreProducto());
+            ps.setInt(2, products.getStockInicial());
+            ps.setInt(3, products.getStockMin());
+            ps.setInt(4, products.getStockMax());
+            ps.setString(5, products.getDescripcion());
+            ps.setDouble(6, products.getPrecioCompra());
+            ps.setDouble(7, products.getPrecioVenta());
+            ps.setInt(8, products.getIDProducto());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "PRODUCTO ACTUALIZADO");
+            
+            
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Producto no Actualizado");
+            System.out.println(e);
+        }
+    }
     
+    public void Eliminar(Productos productos){
+        
+        Connection con = (Connection) getConnection();
+        String consulta = "delete from productos where IDProducto = ?";
+        
+        try{
+            PreparedStatement ps = con.prepareStatement(consulta);
+            ps.setInt(1, productos.getIDProducto());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Producto Eliminado");
+        }catch(SQLException e){
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Producto No eliminado");
+        }
+        
+        
+    }
     
 }
