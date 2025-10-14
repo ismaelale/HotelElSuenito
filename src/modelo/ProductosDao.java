@@ -46,13 +46,13 @@ public class ProductosDao extends Conexion{
     
     public void ActualizaTabla(JTable tabla) {
     // Obtenemos el modelo de la tabla
-        Connection con = (Connection) getConnection();
+        
     
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         modelo.setRowCount(0);
         String consulta = "select *from productos";
         
-        try{
+        try(Connection con = (Connection) getConnection();){
             PreparedStatement ps = con.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
             

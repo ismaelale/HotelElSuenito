@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import modelo.Productos;
 import modelo.ProductosDao;
 import vista.Gestion_Productos;
@@ -67,57 +68,92 @@ public class Productos_Controlador implements ActionListener{
         
         if(e.getSource() == GestionProductos.btnRegistrar){
             
-            //datos de la vista
-            int idproducto = Integer.parseInt(GestionProductos.txtIdProducto.getText());
-            String nombre = GestionProductos.txtNombreProducto.getText();
-            int stockinicial = Integer.parseInt(GestionProductos.txtStockInicial.getText());
-            int stockmin = Integer.parseInt(GestionProductos.txtStockMin.getText());
-            int stockmax = Integer.parseInt(GestionProductos.txtStockMax.getText());
-            String descr = GestionProductos.txtDescripcion.getText();
-            double precioCompra = Double.parseDouble(GestionProductos.txtPrecioCompra.getText());
-            double precioventa = Double.parseDouble(GestionProductos.txtPrecioVenta.getText());
+            try{
+                if(!GestionProductos.txtNombreProducto.getText().isEmpty() &&
+                   !GestionProductos.txtStockInicial.getText().isEmpty() &&
+                   !GestionProductos.txtStockMax.getText().isEmpty() &&
+                   !GestionProductos.txtStockMin.getText().isEmpty() &&
+                   !GestionProductos.txtPrecioCompra.getText().isEmpty() &&
+                   !GestionProductos.txtPrecioVenta.getText().isEmpty()){
+                    
+                    //datos de la vista
+                    String nombre = GestionProductos.txtNombreProducto.getText();
+                    int stockinicial = Integer.parseInt(GestionProductos.txtStockInicial.getText());
+                    int stockmin = Integer.parseInt(GestionProductos.txtStockMin.getText());
+                    int stockmax = Integer.parseInt(GestionProductos.txtStockMax.getText());
+                    String descr = GestionProductos.txtDescripcion.getText();
+                    double precioCompra = Double.parseDouble(GestionProductos.txtPrecioCompra.getText());
+                    double precioventa = Double.parseDouble(GestionProductos.txtPrecioVenta.getText());
+
+                    //Passarlos al modelo
+                    Productos products = new Productos();
+                    products.setNombreProducto(nombre);
+                    products.setStockInicial(stockinicial);
+                    products.setStockMin(stockmin);
+                    products.setStockMax(stockmax);
+                    products.setDescripcion(descr);
+                    products.setPrecioCompra(precioCompra);
+                    products.setPrecioVenta(precioventa);
+
+
+
+                    productosdao.AggProductos(products);
+                    actualizarTabla();
+                    
+                
+                
+                }else{
+                    JOptionPane.showMessageDialog(null, "Ingrese datos en todos los campos");
+                }
+            }catch(Exception ex){
+                System.out.println(ex);
+            }
             
-            //Passarlos al modelo
-            Productos products = new Productos();
-            products.setIDProducto(idproducto);
-            products.setNombreProducto(nombre);
-            products.setStockInicial(stockinicial);
-            products.setStockMin(stockmin);
-            products.setStockMax(stockmax);
-            products.setDescripcion(descr);
-            products.setPrecioCompra(precioCompra);
-            products.setPrecioVenta(precioventa);
-            
-            
-            
-            productosdao.AggProductos(products);
-            actualizarTabla();
         }
         if(e.getSource() == GestionProductos.btnActualizar){
-            //datos de la vista
-            int idproducto = Integer.parseInt(GestionProductos.txtIdProducto.getText());
-            String nombre = GestionProductos.txtNombreProducto.getText();
-            int stockinicial = Integer.parseInt(GestionProductos.txtStockInicial.getText());
-            int stockmin = Integer.parseInt(GestionProductos.txtStockMin.getText());
-            int stockmax = Integer.parseInt(GestionProductos.txtStockMax.getText());
-            String descr = GestionProductos.txtDescripcion.getText();
-            double precioCompra = Double.parseDouble(GestionProductos.txtPrecioCompra.getText());
-            double precioventa = Double.parseDouble(GestionProductos.txtPrecioVenta.getText());
             
-            //Passarlos al modelo
-            Productos products = new Productos();
+            try{
+                
+                if(!GestionProductos.txtNombreProducto.getText().isEmpty() &&
+                    !GestionProductos.txtStockInicial.getText().isEmpty() &&
+                    !GestionProductos.txtStockMax.getText().isEmpty() &&
+                    !GestionProductos.txtStockMin.getText().isEmpty() &&
+                    !GestionProductos.txtPrecioCompra.getText().isEmpty() &&
+                    !GestionProductos.txtPrecioVenta.getText().isEmpty()){
+                    
+                    //datos de la vista
+                    int idproducto = Integer.parseInt(GestionProductos.txtIdProducto.getText());
+                    String nombre = GestionProductos.txtNombreProducto.getText();
+                    int stockinicial = Integer.parseInt(GestionProductos.txtStockInicial.getText());
+                    int stockmin = Integer.parseInt(GestionProductos.txtStockMin.getText());
+                    int stockmax = Integer.parseInt(GestionProductos.txtStockMax.getText());
+                    String descr = GestionProductos.txtDescripcion.getText();
+                    double precioCompra = Double.parseDouble(GestionProductos.txtPrecioCompra.getText());
+                    double precioventa = Double.parseDouble(GestionProductos.txtPrecioVenta.getText());
+
+                    //Passarlos al modelo
+                    Productos products = new Productos();
+
+                    products.setIDProducto(idproducto);
+                    products.setNombreProducto(nombre);
+                    products.setStockInicial(stockinicial);
+                    products.setStockMin(stockmin);
+                    products.setStockMax(stockmax);
+                    products.setDescripcion(descr);
+                    products.setPrecioCompra(precioCompra);
+                    products.setPrecioVenta(precioventa);
+
+                    productosdao.UpdateProductos(products);
+                    actualizarTabla();
+                    
+                }else{
+                    JOptionPane.showMessageDialog(null, "Seleccione una fila para Actualizar");
+                }
+                
+            }catch(Exception ex){
+                
+            }
             
-            products.setIDProducto(idproducto);
-            products.setNombreProducto(nombre);
-            products.setStockInicial(stockinicial);
-            products.setStockMin(stockmin);
-            products.setStockMax(stockmax);
-            products.setDescripcion(descr);
-            products.setPrecioCompra(precioCompra);
-            products.setPrecioVenta(precioventa);
-            
-            productosdao.UpdateProductos(products);
-            actualizarTabla();
         }
         if(e.getSource() == GestionProductos.btnEliminar){
             //datos de la vista
