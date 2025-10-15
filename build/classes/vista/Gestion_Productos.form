@@ -136,7 +136,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="txtBuscarProducto" min="-2" pref="198" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="162" max="-2" attributes="0"/>
+                          <Component id="btnBusquedaProductos" min="-2" pref="162" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="306" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" max="32767" attributes="0"/>
@@ -152,7 +152,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton1" alignment="3" max="32767" attributes="0"/>
+                              <Component id="btnBusquedaProductos" alignment="3" max="32767" attributes="0"/>
                               <Component id="txtBuscarProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -574,13 +574,16 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnBusquedaProductos">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/imgs/buscar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar Producto"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

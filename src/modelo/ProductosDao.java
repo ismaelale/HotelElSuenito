@@ -52,7 +52,7 @@ public class ProductosDao extends Conexion{
         modelo.setRowCount(0);
         String consulta = "select *from productos";
         
-        try(Connection con = (Connection) getConnection();){
+        try(Connection con = (Connection) getConnection()){
             PreparedStatement ps = con.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
             
@@ -119,6 +119,41 @@ public class ProductosDao extends Conexion{
             JOptionPane.showMessageDialog(null, "Producto No eliminado");
         }
         
+    }
+    
+    public void BusquedaProductos(String nombre, JTable tabla){
+        
+        String consulta = "select *from productos where Nombre_Producto LIKE ?";
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        modelo.setRowCount(0);
+        try(Connection con = (Connection) getConnection()){
+            
+            PreparedStatement ps = con.prepareStatement(consulta);
+            ps.setString(1, "%" + nombre + "%");
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                modelo.addRow(new Object[]{
+                rs.getInt("IDProducto"),
+                rs.getString("Nombre_Producto"),
+                rs.getInt("Stock_Inicial"),
+                rs.getInt("Stock_Min"),
+                rs.getInt("Stock_Max"),
+                rs.getString("Descripcion"),
+                rs.getDouble("Precio_Compra"),
+                rs.getDouble("Precio_Venta")
+                
+                });
+                
+            }
+            
+            tabla.setModel(modelo);
+            
+        }catch(SQLException e){
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Busqueda no realizada");
+            
+        }
         
     }
     

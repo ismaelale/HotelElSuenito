@@ -21,7 +21,8 @@ public class Gestion_Productos extends javax.swing.JFrame {
     public Gestion_Productos() {
         initComponents();
         this.txtIdProducto.setEditable(false);
-        Productos_Controlador productoscontrolador = new Productos_Controlador(this);
+        Venta_Productos VentaProductos = new Venta_Productos();
+        Productos_Controlador productoscontrolador = new Productos_Controlador(this, VentaProductos);
         Encabezado();
         ProductosDao productodao = new ProductosDao();
         productodao.ActualizaTabla(TablaProductos);
@@ -78,7 +79,7 @@ public class Gestion_Productos extends javax.swing.JFrame {
         txtIdProducto = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtBuscarProducto = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnBusquedaProductos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Productos");
@@ -364,8 +365,8 @@ public class Gestion_Productos extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Nombre");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/buscar.png"))); // NOI18N
-        jButton1.setText("Buscar Producto");
+        btnBusquedaProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/buscar.png"))); // NOI18N
+        btnBusquedaProductos.setText("Buscar Producto");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -381,7 +382,7 @@ public class Gestion_Productos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBusquedaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 306, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
@@ -393,7 +394,7 @@ public class Gestion_Productos extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBusquedaProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))
                         .addGap(18, 18, 18)
@@ -543,13 +544,13 @@ public class Gestion_Productos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable TablaProductos;
     public javax.swing.JButton btnActualizar;
+    public javax.swing.JButton btnBusquedaProductos;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnInventario;
     public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btnRegistrar;
     public javax.swing.JButton btnVender;
     public javax.swing.JButton btsalir;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

@@ -6,12 +6,15 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import modelo.Productos;
 import modelo.ProductosDao;
 import vista.Gestion_Productos;
+import vista.Venta_Productos;
 
 /**
  *
@@ -21,22 +24,35 @@ import vista.Gestion_Productos;
 public class Productos_Controlador implements ActionListener{
     
    private Gestion_Productos GestionProductos;
+   private Venta_Productos VentaProductos;
    
    ProductosDao productosdao = new ProductosDao();
-   public Productos_Controlador(Gestion_Productos GestionProductos){
+   public Productos_Controlador(Gestion_Productos GestionProductos, Venta_Productos VentaProductos){
        this.GestionProductos = GestionProductos;
+       this.VentaProductos = VentaProductos;
        
        
        this.GestionProductos.btnRegistrar.addActionListener(this);
        this.GestionProductos.btsalir.addActionListener(this);
        this.GestionProductos.btnActualizar.addActionListener(this);
        this.GestionProductos.btnEliminar.addActionListener(this);
+       this.GestionProductos.btnBusquedaProductos.addActionListener(this);
+       this.GestionProductos.btnVender.addActionListener(this);
+       
        
        this.GestionProductos.TablaProductos.addMouseListener(new MouseAdapter(){
           public void mouseClicked(MouseEvent e){
               llenarCamposDesdeTabla();
           } 
            
+       });
+       
+       this.GestionProductos.txtBuscarProducto.addKeyListener(new KeyAdapter(){
+           public void keyReleased(KeyEvent evt){
+               String nombreproducto = GestionProductos.txtBuscarProducto.getText();
+               productosdao.BusquedaProductos(nombreproducto, GestionProductos.TablaProductos);
+           }
+       
        });
        
    }
@@ -166,6 +182,18 @@ public class Productos_Controlador implements ActionListener{
             productosdao.Eliminar(products);
             actualizarTabla();
             
+        }
+        
+        if(e.getSource() == GestionProductos.btnBusquedaProductos){
+            String nombre = GestionProductos.txtBuscarProducto.getText();
+            Productos productos = new Productos();
+            
+            productosdao.BusquedaProductos(nombre, GestionProductos.TablaProductos);
+            
+            
+        }
+        if(e.getSource() == GestionProductos.btnVender){
+            VentaProductos.setVisible(true);
         }
         
         
