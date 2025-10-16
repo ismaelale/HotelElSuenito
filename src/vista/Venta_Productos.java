@@ -5,7 +5,9 @@
 package vista;
 
 import com.toedter.calendar.JCalendar;
+import controlador.Ventas_Controlador;
 import javax.swing.table.DefaultTableModel;
+import modelo.Ventas_Dao;
 
 /**
  *
@@ -26,6 +28,12 @@ public class Venta_Productos extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         Encabezado();
+        
+        Ventas_Controlador ventasControlador = new Ventas_Controlador(this);
+        Ventas_Dao ventasDao = new Ventas_Dao();
+        ventasDao.MostrarDatosProductos(TablaProductosVentas);
+        
+        
     }
 
     
@@ -101,7 +109,7 @@ public class Venta_Productos extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(96, 24, 44));
 
         jPanel2.setBackground(new java.awt.Color(96, 24, 44));

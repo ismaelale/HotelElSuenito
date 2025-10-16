@@ -12,12 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ismael/Documents/HotelElSuenito_Grupo5/HotelElSuenito_Grupo5/HotelElSuenito_Grupo5/HotelElSuenito/src/vista/Gestion_Productos.java</file>
             <file>file:/C:/Users/Ismael/Documents/HotelElSuenito_Grupo5/HotelElSuenito_Grupo5/HotelElSuenito_Grupo5/HotelElSuenito/src/modelo/Productos.java</file>
             <file>file:/C:/Users/Ismael/Documents/HotelElSuenito_Grupo5/HotelElSuenito_Grupo5/HotelElSuenito_Grupo5/HotelElSuenito/src/modelo/ProductosDao.java</file>
             <file>file:/C:/Users/Ismael/Documents/HotelElSuenito_Grupo5/HotelElSuenito_Grupo5/HotelElSuenito_Grupo5/HotelElSuenito/src/controlador/Productos_Controlador.java</file>
-            <file>file:/C:/Users/Ismael/Documents/HotelElSuenito_Grupo5/HotelElSuenito_Grupo5/HotelElSuenito_Grupo5/HotelElSuenito/src/controlador/Reservacion_Controlador.java</file>
             <file>file:/C:/Users/Ismael/Documents/HotelElSuenito_Grupo5/HotelElSuenito_Grupo5/HotelElSuenito_Grupo5/HotelElSuenito/src/ElSuenito/main.java</file>
+            <file>file:/C:/Users/Ismael/Documents/HotelElSuenito_Grupo5/HotelElSuenito_Grupo5/HotelElSuenito_Grupo5/HotelElSuenito/src/vista/Venta_Productos.java</file>
         </group>
     </open-files>
 </project-private>
