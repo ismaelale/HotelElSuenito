@@ -13,13 +13,19 @@ import java.util.Date;
  */
 public class VentasModelo {
     
+    private int idproducto;
     private Date fecha_compra;
     private int stock_actual;
     private int cantidad_compra;
     private double precio_unitario;
     private String metodo_pago;
     
-    public VentasModelo(Date fecha_compra, int stock_actual, int cantidad_compra, double precio_unitario, String metodo_pago){
+    public VentasModelo(){
+        
+    }
+    
+    public VentasModelo(int idproducto, Date fecha_compra, int stock_actual, int cantidad_compra, double precio_unitario, String metodo_pago){
+        this.idproducto = idproducto;
         this.fecha_compra = fecha_compra;
         this.stock_actual = stock_actual;
         this.cantidad_compra = cantidad_compra;
@@ -27,6 +33,9 @@ public class VentasModelo {
         this.metodo_pago = metodo_pago;
     }
 
+    public int getIdproducto() {
+        return idproducto;
+    }
     
     public Date getFecha_compra() {
         return fecha_compra;
@@ -48,6 +57,11 @@ public class VentasModelo {
         return metodo_pago;
     }
 
+    public void setIdproducto(int idproducto) {
+        this.idproducto = idproducto;
+    }
+
+    
     public void setFecha_compra(Date fecha_compra) {
         this.fecha_compra = fecha_compra;
     }

@@ -8,7 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Date;
 import modelo.ProductosDao;
+import modelo.VentasModelo;
 import modelo.Ventas_Dao;
 import vista.Venta_Productos;
 
@@ -34,12 +36,10 @@ public class Ventas_Controlador implements ActionListener{
                 productosDao.BusquedaProductos(nombreproducto, ventaProductos.TablaProductosVentas);
                 
             }
-        
-        
-        
         });
         
         
+        this.ventaProductos.btAgregar.addActionListener(this);
         
         
         
@@ -49,6 +49,25 @@ public class Ventas_Controlador implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent evt){
+        
+        if(evt.getSource() == ventaProductos.btAgregar){
+           
+            Date fechacompra = ventaProductos.dateFechaCompra.getDate();
+            int cantidadcompra = Integer.parseInt(ventaProductos.txtCantidad.getText());
+            String metodopago = String.valueOf(ventaProductos.cbMetodoPago.getSelectedItem());
+            
+            //MODELOS
+            VentasModelo ventasmodelo = new VentasModelo();
+            ventasmodelo.setFecha_compra(fechacompra);
+            ventasmodelo.setCantidad_compra(cantidadcompra);
+            ventasmodelo.setMetodo_pago(metodopago);
+            
+            
+            Ventas_Dao ventasdao = new Ventas_Dao();
+            ventasdao.AñadirProductoElegido(ventaProductos.TablaProductosVentas);
+            
+            
+        }
         
     }
     
