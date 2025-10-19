@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import modelo.Productos;
 import modelo.ProductosDao;
+import modelo.Ventas_Dao;
 import vista.Gestion_Productos;
 import vista.Venta_Productos;
 
@@ -193,7 +194,10 @@ public class Productos_Controlador implements ActionListener{
             
         }
         if(e.getSource() == GestionProductos.btnVender){
+            Ventas_Dao ventasdao = new Ventas_Dao();
+            ventasdao.MostrarDatosProductos(VentaProductos.TablaProductosVentas);
             VentaProductos.setVisible(true);
+            
         }
         
         
