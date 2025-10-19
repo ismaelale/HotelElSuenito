@@ -32,6 +32,7 @@ public class Ventas_Controlador implements ActionListener{
         this.ventaProductos = ventaProductos;
         
         
+        //BUSQUEDA POR CAMPO DE TEXTO DE UN PRODUCTO QUE QUEREMOS BUSCAR POR EL NOMBRE
         this.ventaProductos.txtBuscarProdcuto.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent evt){
                 
@@ -57,6 +58,8 @@ public class Ventas_Controlador implements ActionListener{
             }
         });
         
+        //AL MOMENTO DE PRESIONAR ENTER, EN EL CAMPO DE TEXTO DE MONTO, 
+//        NOS DARÁ EL RESULTADO DEL CAMBIO QUE TIENE QUE RECIBIR EL CLIENTE
         this.ventaProductos.txtMonto.addKeyListener(new KeyAdapter(){
         
             public void keyPressed(KeyEvent evt){
@@ -94,7 +97,7 @@ public class Ventas_Controlador implements ActionListener{
         
         
         
-        
+        //ACCIONES DE BOTONES 
         this.ventaProductos.btAgregar.addActionListener(this);
         this.ventaProductos.btEliminar.addActionListener(this);
         this.ventaProductos.btnAggVenta.addActionListener(this);
@@ -139,6 +142,8 @@ public class Ventas_Controlador implements ActionListener{
             ventasdao.EliminarProductoLista(ventaProductos.TablaListaCompras);
             
         }
+        
+        //AGREGAR LA VENTA EN LA BASE DE DATOS 
         if(evt.getSource() == ventaProductos.btnAggVenta){
 //            VentasModelo ventasmodelo = new VentasModelo();
             Date fechacompra = ventaProductos.dateFechaCompra.getDate();
@@ -146,21 +151,11 @@ public class Ventas_Controlador implements ActionListener{
                 fechacompra = new Date();
             }
             
-            int cantidadcompra = 0;
-            try{
-                cantidadcompra = Integer.parseInt(ventaProductos.txtCantidad.getText());
-                if(cantidadcompra < 0){
-                    cantidadcompra = 1;
-                }
-            }catch(NumberFormatException nb){
-                System.out.println(nb);
-            }
-            
             String metodopago = String.valueOf(ventaProductos.cbMetodoPago.getSelectedItem());
             
 //            Ventas_Dao ventasdao = new Ventas_Dao();
             
-            ventasdao.AñadirVenta(ventaProductos.TablaProductosVentas, fechacompra, cantidadcompra, metodopago);
+            ventasdao.AñadirVenta(ventaProductos.TablaListaCompras, fechacompra, metodopago);
         }
         
         //BOTON PARA CALCULAR EL SUBTOTAL, IMPUESTO Y TOTAL DE LOS PRODUCTOS QUE ESTAN EN LA LISTA

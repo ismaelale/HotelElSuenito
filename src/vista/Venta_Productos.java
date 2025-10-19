@@ -38,7 +38,7 @@ public class Venta_Productos extends javax.swing.JFrame {
 
     
     public void Encabezado(){
-        String columnas[] = {"Cantidad","Producto", "IDProducto", "Precio Unitario", "Total"};
+        String columnas[] = {"Cantidad","Producto", "IDProducto", "Stock Actual", "Precio Unitario", "Total"};
         TablaCompra.setColumnIdentifiers(columnas);
         TablaListaCompras.setModel(TablaCompra);
         

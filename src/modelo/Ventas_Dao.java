@@ -71,16 +71,16 @@ public class Ventas_Dao extends Conexion{
             
             if(filaseleccionada != -1){
                 
-                String nombreproducto = tabla.getValueAt(filaseleccionada, 1).toString();
                 int idproducto = Integer.parseInt(tabla.getValueAt(filaseleccionada, 0).toString());
+                String nombreproducto = tabla.getValueAt(filaseleccionada, 1).toString();
+                int stockactual = Integer.parseInt(tabla.getValueAt(filaseleccionada, 2).toString());
                 double preciounitario = Double.parseDouble(tabla.getValueAt(filaseleccionada, 3).toString());
                 
-                int stockactual = Integer.parseInt(tabla.getValueAt(filaseleccionada, 2).toString());
                 
                 double total = preciounitario * cantidadcompra;
                 
                 if(stockactual > cantidadcompra){
-                    modelolista.addRow(new Object[]{cantidadcompra, nombreproducto, idproducto, preciounitario, total});
+                    modelolista.addRow(new Object[]{cantidadcompra, nombreproducto, idproducto, stockactual, preciounitario, total});
                     tablalista.getModel();
                 }else{
                     JOptionPane.showMessageDialog(null, "Stock Insuficiente");
@@ -96,19 +96,26 @@ public class Ventas_Dao extends Conexion{
         
     }
     
-    public void AñadirVenta(JTable tabla, Date fechacompra, int cantidadcompra, String metodopago){
+    public void AñadirVenta(JTable tabla, Date fechacompra, String metodopago){
         
         VentasModelo ventasmodelo = new VentasModelo();
         Venta_Productos ventaproductos = new Venta_Productos();
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         
         try(Connection con = (Connection) getConnection()){
             
-            int filaseleccionada = tabla.getSelectedRow();
+            if(modelo.getRowCount() == 0){
+                JOptionPane.showMessageDialog(null, "NO hay productos en lista");
+            }
             
-            if(filaseleccionada != -1){
-                int idproducto = Integer.parseInt(tabla.getValueAt(filaseleccionada, 0).toString());
-                int stockactual = Integer.parseInt(tabla.getValueAt(filaseleccionada, 2).toString());
-                double preciounitario = Double.parseDouble(tabla.getValueAt(filaseleccionada, 3).toString());
+            for(int i = 0; i < modelo.getRowCount(); i++){
+                
+                int cantidadcompra = Integer.parseInt(tabla.getValueAt(i, 0).toString());
+                String nombreproducto = tabla.getValueAt(i, 1).toString();
+                int idproducto = Integer.parseInt(tabla.getValueAt(i, 2).toString());
+                int stockactual = Integer.parseInt(tabla.getValueAt(i, 3).toString());
+                double preciounitario = Double.parseDouble(tabla.getValueAt(i, 4).toString());
+               
                 
                 ventasmodelo.setIdproducto(idproducto);
                 ventasmodelo.setFecha_compra(fechacompra);
@@ -120,6 +127,8 @@ public class Ventas_Dao extends Conexion{
                 String consulta = "call VALIDACION_VENTAS(?,?,?,?,?,?)";
                 PreparedStatement ps = con.prepareStatement(consulta);
 
+                
+                
                 ps.setInt(1, ventasmodelo.getIdproducto());
                 ps.setDate(2, new java.sql.Date(ventasmodelo.getFecha_compra().getTime()));
                 ps.setInt(3, ventasmodelo.getStock_actual());
@@ -127,17 +136,12 @@ public class Ventas_Dao extends Conexion{
                 ps.setDouble(5, ventasmodelo.getPrecio_unitario());
                 ps.setString(6, ventasmodelo.getMetodo_pago());
                 
-                ResultSet rs = ps.executeQuery();
+                ps.executeUpdate();
                 
-                if(rs.next()){
-                    String mensaje = rs.getString(1);
-                    JOptionPane.showMessageDialog(null, mensaje);
-                }
-                
-            } 
-            else{
-                JOptionPane.showMessageDialog(null, "Seleccione");
             }
+            
+        JOptionPane.showMessageDialog(null, "Venta Registrada exitosamente");
+                
         }catch(SQLException e){
             e.printStackTrace();
             System.out.println(e.getMessage());
