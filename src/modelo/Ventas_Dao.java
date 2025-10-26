@@ -136,17 +136,30 @@ public class Ventas_Dao extends Conexion{
                 ps.setDouble(5, ventasmodelo.getPrecio_unitario());
                 ps.setString(6, ventasmodelo.getMetodo_pago());
                 
-                ps.executeUpdate();
+                ResultSet rs = ps.executeQuery();
                 
+                if(rs.next()){
+                    String mensaje = rs.getString(1);
+                    JOptionPane.showMessageDialog(null, mensaje);
+                }
+
+
             }
-            
-        JOptionPane.showMessageDialog(null, "Venta Registrada exitosamente");
                 
         }catch(SQLException e){
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
         
+    }
+    
+      
+    public void Limpiar(JTable tabla){
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        
+        while(modelo.getRowCount() < 0){
+            modelo.removeRow(0);
+        }
     }
     
     
@@ -170,7 +183,7 @@ public class Ventas_Dao extends Conexion{
         DefaultTableModel modelolista = (DefaultTableModel) tablalistacompras.getModel();
         
         for(int i = 0; i < modelolista.getRowCount(); i++){
-            total += Double.parseDouble(modelolista.getValueAt(i, 4).toString());
+            total += Double.parseDouble(modelolista.getValueAt(i, 5).toString());
         }
         
         

@@ -115,26 +115,36 @@ public class Ventas_Controlador implements ActionListener{
     public void actionPerformed(ActionEvent evt){
         
         if(evt.getSource() == ventaProductos.btAgregar){
-           
-            //VALIDACION DE CANTIDAD A COMPRAR
-            int cantidadcompra = 0;
-            try{
-                cantidadcompra = Integer.parseInt(ventaProductos.txtCantidad.getText());
-                if(cantidadcompra < 0){
-                    cantidadcompra = 1;
-                }
-            }catch(NumberFormatException e){
-                System.out.println(e);
+            
+            int fila = ventaProductos.TablaProductosVentas.getSelectedRow();
+            
+            if(ventaProductos.cbMetodoPago.getSelectedIndex() == 0 || ventaProductos.txtCantidad.getText().isEmpty()){
+                
+                JOptionPane.showMessageDialog(null, "CAMPOS VACIOS CANTIDAD/METODO DE PAGO");
+                
             }
-            
-            
-            //Ventas_Dao ventasdao = new Ventas_Dao();
-            ventasdao.AñadirListaCompras(ventaProductos.TablaProductosVentas, ventaProductos.TablaListaCompras, cantidadcompra);
-            
-            ventaProductos.txtBuscarProdcuto.setText("");
-            ventaProductos.txtCantidad.setText("");
-            ventaProductos.cbMetodoPago.setSelectedIndex(0);
-            
+            else{
+                
+                //VALIDACION DE CANTIDAD A COMPRAR
+                int cantidadcompra = 0;
+                try{
+                    cantidadcompra = Integer.parseInt(ventaProductos.txtCantidad.getText());
+                    if(cantidadcompra < 0){
+                        cantidadcompra = 1;
+                    }
+                }catch(NumberFormatException e){
+                    System.out.println(e);
+                }
+
+
+                //Ventas_Dao ventasdao = new Ventas_Dao();
+                ventasdao.AñadirListaCompras(ventaProductos.TablaProductosVentas, ventaProductos.TablaListaCompras, cantidadcompra);
+
+                ventaProductos.txtBuscarProdcuto.setText("");
+                ventaProductos.txtCantidad.setText("");
+                ventaProductos.cbMetodoPago.setSelectedIndex(0);
+            }
+           
         }
         if(evt.getSource() == ventaProductos.btEliminar){
             
@@ -173,6 +183,10 @@ public class Ventas_Controlador implements ActionListener{
         if(evt.getSource() == ventaProductos.btnSalir){
             ventaProductos.dispose();
             ventasdao.MostrarDatosProductos(ventaProductos.TablaProductosVentas);
+            ventasdao.Limpiar(ventaProductos.TablaListaCompras);
+            ventaProductos.txtBuscarProdcuto.setText("");
+            ventaProductos.txtCantidad.setText("");
+            ventaProductos.cbMetodoPago.setSelectedIndex(0);
             
         }
         

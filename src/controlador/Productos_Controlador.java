@@ -112,11 +112,19 @@ public class Productos_Controlador implements ActionListener{
                     products.setPrecioCompra(precioCompra);
                     products.setPrecioVenta(precioventa);
 
-
+                    
 
                     productosdao.AggProductos(products);
                     actualizarTabla();
-                    
+                      
+                    GestionProductos.txtNombreProducto.setText("");
+                    GestionProductos.txtStockInicial.setText("");
+                    GestionProductos.txtStockMin.setText("");
+                    GestionProductos.txtStockMax.setText("");
+                    GestionProductos.txtDescripcion.setText("");
+                    GestionProductos.txtPrecioCompra.setText("");
+                    GestionProductos.txtPrecioVenta.setText("");
+                    GestionProductos.txtIdProducto.setText("");
                 
                 
                 }else{
@@ -163,6 +171,16 @@ public class Productos_Controlador implements ActionListener{
                     productosdao.UpdateProductos(products);
                     actualizarTabla();
                     
+                    GestionProductos.txtNombreProducto.setText("");
+                    GestionProductos.txtStockInicial.setText("");
+                    GestionProductos.txtStockMin.setText("");
+                    GestionProductos.txtStockMax.setText("");
+                    GestionProductos.txtDescripcion.setText("");
+                    GestionProductos.txtPrecioCompra.setText("");
+                    GestionProductos.txtPrecioVenta.setText("");
+                    GestionProductos.txtIdProducto.setText("");
+                
+                    
                 }else{
                     JOptionPane.showMessageDialog(null, "Seleccione una fila para Actualizar");
                 }
@@ -174,14 +192,35 @@ public class Productos_Controlador implements ActionListener{
         }
         if(e.getSource() == GestionProductos.btnEliminar){
             //datos de la vista
-            int idproducto = Integer.parseInt(GestionProductos.txtIdProducto.getText());
             
-            //Passarlos al modelo
-            Productos products = new Productos();
-            products.setIDProducto(idproducto);
+            if(!GestionProductos.txtNombreProducto.getText().isEmpty() &&
+                    !GestionProductos.txtStockInicial.getText().isEmpty() &&
+                    !GestionProductos.txtStockMax.getText().isEmpty() &&
+                    !GestionProductos.txtStockMin.getText().isEmpty() &&
+                    !GestionProductos.txtPrecioCompra.getText().isEmpty() &&
+                    !GestionProductos.txtPrecioVenta.getText().isEmpty()){
             
-            productosdao.Eliminar(products);
-            actualizarTabla();
+                int idproducto = Integer.parseInt(GestionProductos.txtIdProducto.getText());
+
+                //Passarlos al modelo
+                Productos products = new Productos();
+                products.setIDProducto(idproducto);
+
+                productosdao.Eliminar(products);
+                actualizarTabla();
+
+                GestionProductos.txtNombreProducto.setText("");
+                GestionProductos.txtStockInicial.setText("");
+                GestionProductos.txtStockMin.setText("");
+                GestionProductos.txtStockMax.setText("");
+                GestionProductos.txtDescripcion.setText("");
+                GestionProductos.txtPrecioCompra.setText("");
+                GestionProductos.txtPrecioVenta.setText("");
+                GestionProductos.txtIdProducto.setText("");
+            }else{
+                JOptionPane.showMessageDialog(null, "SELECCIONE UNA FILA");
+            }
+                
             
         }
         
