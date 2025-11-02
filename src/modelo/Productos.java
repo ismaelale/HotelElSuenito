@@ -96,7 +96,10 @@ public class Productos {
     public void setPrecioVenta(double PrecioVenta) {
         this.PrecioVenta = PrecioVenta;
     }
-
+    
+    public String toString(){
+        return NombreProducto;
+    }
     
    
     

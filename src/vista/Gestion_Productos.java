@@ -22,7 +22,8 @@ public class Gestion_Productos extends javax.swing.JFrame {
         initComponents();
         this.txtIdProducto.setEditable(false);
         Venta_Productos VentaProductos = new Venta_Productos();
-        Productos_Controlador productoscontrolador = new Productos_Controlador(this, VentaProductos);
+        ProductosVendidos ProductosVendidos = new ProductosVendidos();
+        Productos_Controlador productoscontrolador = new Productos_Controlador(this, VentaProductos, ProductosVendidos);
         Encabezado();
         ProductosDao productodao = new ProductosDao();
         productodao.ActualizaTabla(TablaProductos);
@@ -70,7 +71,7 @@ public class Gestion_Productos extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         btnVender = new javax.swing.JButton();
-        btnInventario = new javax.swing.JButton();
+        btProductosVendidos = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtStockMin = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -221,8 +222,8 @@ public class Gestion_Productos extends javax.swing.JFrame {
         btnVender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ventas.png"))); // NOI18N
         btnVender.setText("VENDER");
 
-        btnInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/inventario.png"))); // NOI18N
-        btnInventario.setText("PRODUCTOS VENDIDOS");
+        btProductosVendidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/inventario.png"))); // NOI18N
+        btProductosVendidos.setText("PRODUCTOS VENDIDOS");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -236,7 +237,7 @@ public class Gestion_Productos extends javax.swing.JFrame {
                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btProductosVendidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26))
         );
         jPanel5Layout.setVerticalGroup(
@@ -253,7 +254,7 @@ public class Gestion_Productos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVender)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnInventario)
+                .addComponent(btProductosVendidos)
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -544,10 +545,10 @@ public class Gestion_Productos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable TablaProductos;
+    public javax.swing.JButton btProductosVendidos;
     public javax.swing.JButton btnActualizar;
     public javax.swing.JButton btnBusquedaProductos;
     public javax.swing.JButton btnEliminar;
-    public javax.swing.JButton btnInventario;
     public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btnRegistrar;
     public javax.swing.JButton btnVender;

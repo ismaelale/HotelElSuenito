@@ -157,4 +157,27 @@ public class ProductosDao extends Conexion{
         
     }
     
+    public ArrayList<Productos> obtenerproductos(){
+        ArrayList<Productos> lista = new ArrayList();
+        
+        try(Connection con = (Connection)getConnection()){
+            
+            String consulta = "select Nombre_Producto from productos";
+            
+            PreparedStatement ps = con.prepareStatement(consulta);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Productos p = new Productos();
+                p.setNombreProducto(rs.getString("Nombre_Producto"));
+                lista.add(p);
+            }
+            
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        
+        return lista;
+    }
+    
 }

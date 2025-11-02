@@ -412,7 +412,7 @@
                               <Component id="btnEliminar" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnLimpiar" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnVender" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnInventario" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btProductosVendidos" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
@@ -432,7 +432,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnVender" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnInventario" min="-2" max="-2" attributes="0"/>
+                          <Component id="btProductosVendidos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="9" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -497,7 +497,7 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnInventario">
+                <Component class="javax.swing.JButton" name="btProductosVendidos">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imgs/inventario.png"/>
