@@ -22,8 +22,7 @@ public class Gestion_Productos extends javax.swing.JFrame {
         initComponents();
         this.txtIdProducto.setEditable(false);
         Venta_Productos VentaProductos = new Venta_Productos();
-        ProductosVendidos ProductosVendidos = new ProductosVendidos();
-        Productos_Controlador productoscontrolador = new Productos_Controlador(this, VentaProductos, ProductosVendidos);
+        Productos_Controlador productoscontrolador = new Productos_Controlador(this, VentaProductos);
         Encabezado();
         ProductosDao productodao = new ProductosDao();
         productodao.ActualizaTabla(TablaProductos);

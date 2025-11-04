@@ -15,7 +15,6 @@ import modelo.Productos;
 import modelo.ProductosDao;
 import modelo.Ventas_Dao;
 import vista.Gestion_Productos;
-import vista.ProductosVendidos;
 import vista.Venta_Productos;
 
 /**
@@ -27,13 +26,11 @@ public class Productos_Controlador implements ActionListener{
     
    private Gestion_Productos GestionProductos;
    private Venta_Productos VentaProductos;
-   private ProductosVendidos productosVendidos;
    
    ProductosDao productosdao = new ProductosDao();
-   public Productos_Controlador(Gestion_Productos GestionProductos, Venta_Productos VentaProductos, ProductosVendidos productosVendidos){
+   public Productos_Controlador(Gestion_Productos GestionProductos, Venta_Productos VentaProductos){
        this.GestionProductos = GestionProductos;
        this.VentaProductos = VentaProductos;
-       this.productosVendidos = productosVendidos;
        
        
        this.GestionProductos.btnRegistrar.addActionListener(this);
@@ -249,7 +246,7 @@ public class Productos_Controlador implements ActionListener{
         }
         if(e.getSource() == GestionProductos.btProductosVendidos){
             
-            productosVendidos.setVisible(true);
+            
             
         }
         
