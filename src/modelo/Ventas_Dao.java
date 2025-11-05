@@ -102,8 +102,13 @@ public class Ventas_Dao extends Conexion{
         Venta_Productos ventaproductos = new Venta_Productos();
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         
+          
+        
         try(Connection con = (Connection) getConnection()){
             
+            String consulta = "call VALIDACION_VENTAS(?,?,?,?,?,?)";
+            PreparedStatement ps = con.prepareStatement(consulta);
+           
             if(modelo.getRowCount() == 0){
                 JOptionPane.showMessageDialog(null, "NO hay productos en lista");
             }
@@ -124,11 +129,6 @@ public class Ventas_Dao extends Conexion{
                 ventasmodelo.setPrecio_unitario(preciounitario);
                 ventasmodelo.setMetodo_pago(metodopago);
                 
-                String consulta = "call VALIDACION_VENTAS(?,?,?,?,?,?)";
-                PreparedStatement ps = con.prepareStatement(consulta);
-
-                
-                
                 ps.setInt(1, ventasmodelo.getIdproducto());
                 ps.setDate(2, new java.sql.Date(ventasmodelo.getFecha_compra().getTime()));
                 ps.setInt(3, ventasmodelo.getStock_actual());
@@ -136,14 +136,12 @@ public class Ventas_Dao extends Conexion{
                 ps.setDouble(5, ventasmodelo.getPrecio_unitario());
                 ps.setString(6, ventasmodelo.getMetodo_pago());
                 
-                ResultSet rs = ps.executeQuery();
+            }
+             ResultSet rs = ps.executeQuery();
                 
-                if(rs.next()){
-                    String mensaje = rs.getString(1);
-                    JOptionPane.showMessageDialog(null, mensaje);
-                }
-
-
+            if(rs.next()){
+                String mensaje = rs.getString(1);
+                JOptionPane.showMessageDialog(null, mensaje);
             }
                 
         }catch(SQLException e){
@@ -157,7 +155,7 @@ public class Ventas_Dao extends Conexion{
     public void Limpiar(JTable tabla){
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         
-        while(modelo.getRowCount() < 0){
+        while(modelo.getRowCount() > 0){
             modelo.removeRow(0);
         }
     }

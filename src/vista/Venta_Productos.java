@@ -81,7 +81,7 @@ public class Venta_Productos extends javax.swing.JFrame {
         txtCambio = new javax.swing.JTextField();
         btnAggVenta = new javax.swing.JButton();
         btCalcular = new javax.swing.JButton();
-        btListaCompras = new javax.swing.JButton();
+        btLimpiarDatos = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         dateFechaCompra = new com.toedter.calendar.JDateChooser();
@@ -200,9 +200,9 @@ public class Venta_Productos extends javax.swing.JFrame {
         btCalcular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/calcular.png"))); // NOI18N
         btCalcular.setText("Calcular");
 
-        btListaCompras.setForeground(new java.awt.Color(0, 0, 0));
-        btListaCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/lista_compras.png"))); // NOI18N
-        btListaCompras.setText("Lista de Compras");
+        btLimpiarDatos.setForeground(new java.awt.Color(0, 0, 0));
+        btLimpiarDatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/limpiar-datos.png"))); // NOI18N
+        btLimpiarDatos.setText("Limpiar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -224,12 +224,17 @@ public class Venta_Productos extends javax.swing.JFrame {
                                 .addComponent(jLabel10)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtIsv, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(90, 90, 90)
-                        .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAggVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(90, 90, 90)
+                                .addComponent(jLabel13)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAggVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btLimpiarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jLabel7)
@@ -240,10 +245,7 @@ public class Venta_Productos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)
-                        .addComponent(btCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btListaCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -271,10 +273,10 @@ public class Venta_Productos extends javax.swing.JFrame {
                             .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(btnAggVenta)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btListaCompras)
-                .addContainerGap())
+                        .addComponent(btnAggVenta)
+                        .addGap(18, 18, 18)
+                        .addComponent(btLimpiarDatos)))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -453,7 +455,7 @@ public class Venta_Productos extends javax.swing.JFrame {
     public javax.swing.JButton btAgregar;
     public javax.swing.JButton btCalcular;
     public javax.swing.JButton btEliminar;
-    public javax.swing.JButton btListaCompras;
+    public javax.swing.JButton btLimpiarDatos;
     public javax.swing.JButton btnAggVenta;
     public javax.swing.JButton btnSalir;
     public javax.swing.JComboBox<String> cbMetodoPago;

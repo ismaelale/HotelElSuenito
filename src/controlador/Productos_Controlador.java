@@ -13,8 +13,10 @@ import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import modelo.Productos;
 import modelo.ProductosDao;
+import modelo.ProductosVendidos_DAO;
 import modelo.Ventas_Dao;
 import vista.Gestion_Productos;
+import vista.ProductosVendidos;
 import vista.Venta_Productos;
 
 /**
@@ -26,12 +28,13 @@ public class Productos_Controlador implements ActionListener{
     
    private Gestion_Productos GestionProductos;
    private Venta_Productos VentaProductos;
+   private ProductosVendidos productosVendidos;
    
    ProductosDao productosdao = new ProductosDao();
-   public Productos_Controlador(Gestion_Productos GestionProductos, Venta_Productos VentaProductos){
+   public Productos_Controlador(Gestion_Productos GestionProductos, Venta_Productos VentaProductos, ProductosVendidos productosVendidos){
        this.GestionProductos = GestionProductos;
        this.VentaProductos = VentaProductos;
-       
+       this.productosVendidos = productosVendidos;
        
        this.GestionProductos.btnRegistrar.addActionListener(this);
        this.GestionProductos.btsalir.addActionListener(this);
@@ -245,8 +248,10 @@ public class Productos_Controlador implements ActionListener{
             GestionProductos.dispose();
         }
         if(e.getSource() == GestionProductos.btProductosVendidos){
-            
-            
+            ProductosVendidos_DAO productosvendidosdao = new ProductosVendidos_DAO();
+            productosvendidosdao.VistaProductosVendidos(productosVendidos.tbProductosVendidos);
+            productosVendidos.setVisible(true);
+            productosVendidos.setLocationRelativeTo(null);
             
         }
         

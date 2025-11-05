@@ -78,6 +78,8 @@ public class Ventas_Controlador implements ActionListener{
 
                         if(cambio < 0){
                             JOptionPane.showMessageDialog(null, "Monto Insuficiente");
+                            ventaProductos.txtCambio.setText("");
+                            return;
                         }
 
                         ventaProductos.txtCambio.setText(String.format("%.2f", cambio));
@@ -103,6 +105,7 @@ public class Ventas_Controlador implements ActionListener{
         this.ventaProductos.btnAggVenta.addActionListener(this);
         this.ventaProductos.btCalcular.addActionListener(this);
         this.ventaProductos.btnSalir.addActionListener(this);
+        this.ventaProductos.btLimpiarDatos.addActionListener(this);
         
     }
     
@@ -142,7 +145,7 @@ public class Ventas_Controlador implements ActionListener{
 
                 ventaProductos.txtBuscarProdcuto.setText("");
                 ventaProductos.txtCantidad.setText("");
-                ventaProductos.cbMetodoPago.setSelectedIndex(0);
+                ventasdao.MostrarDatosProductos(ventaProductos.TablaProductosVentas);
             }
            
         }
@@ -164,8 +167,24 @@ public class Ventas_Controlador implements ActionListener{
             String metodopago = String.valueOf(ventaProductos.cbMetodoPago.getSelectedItem());
             
 //            Ventas_Dao ventasdao = new Ventas_Dao();
-            
-            ventasdao.AñadirVenta(ventaProductos.TablaListaCompras, fechacompra, metodopago);
+            if(!ventaProductos.txtIsv.getText().isEmpty() || !ventaProductos.txtMonto.getText().isEmpty() || !ventaProductos.txtTotal.getText().isEmpty() || 
+                !ventaProductos.txtSubTotal.getText().isEmpty()){
+                
+                ventasdao.AñadirVenta(ventaProductos.TablaListaCompras, fechacompra, metodopago);
+                ventasdao.Limpiar(ventaProductos.TablaListaCompras);
+                ventaProductos.cbMetodoPago.setSelectedIndex(0);
+                ventaProductos.txtBuscarProdcuto.setText("");
+                ventaProductos.txtCantidad.setText("");
+                ventaProductos.txtCambio.setText("");
+                ventaProductos.txtIsv.setText("");
+                ventaProductos.txtMonto.setText("");
+                ventaProductos.txtSubTotal.setText("");
+                ventaProductos.txtTotal.setText("");
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Campos vacios");
+            }
+                
         }
         
         //BOTON PARA CALCULAR EL SUBTOTAL, IMPUESTO Y TOTAL DE LOS PRODUCTOS QUE ESTAN EN LA LISTA
@@ -187,6 +206,18 @@ public class Ventas_Controlador implements ActionListener{
             ventaProductos.txtBuscarProdcuto.setText("");
             ventaProductos.txtCantidad.setText("");
             ventaProductos.cbMetodoPago.setSelectedIndex(0);
+            
+        }
+        if(evt.getSource() == ventaProductos.btLimpiarDatos){
+            ventasdao.Limpiar(ventaProductos.TablaListaCompras);
+            ventaProductos.cbMetodoPago.setSelectedIndex(0);
+            ventaProductos.txtBuscarProdcuto.setText("");
+            ventaProductos.txtCantidad.setText("");
+            ventaProductos.txtCambio.setText("");
+            ventaProductos.txtIsv.setText("");
+            ventaProductos.txtMonto.setText("");
+            ventaProductos.txtSubTotal.setText("");
+            ventaProductos.txtTotal.setText("");
             
         }
         
